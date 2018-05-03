@@ -284,11 +284,13 @@ def get_all_storages_with_type(data):
 
 
 def get_rhel_hosts(hosts):
-    return [h for h in hosts if 'rhel' in h['os']]
+    return [h for h in hosts if 'rhel' in h['os'].lower()]
 
 
 def get_rhvh_hosts(hosts):
-    return [h for h in hosts if 'rhvh' in h['os'] or 'ovirt-node' in h['os']]
+    return [h for h in hosts
+            if 'rhvh' in h['os'].lower() or
+            'ovirt-node' in h['os'].lower()]
 
 
 def get_hosts_with_host_id(start_point, hosts):
