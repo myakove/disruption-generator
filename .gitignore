@@ -102,4 +102,5 @@ ENV/
 
 # development
 development.cfg
-.swp
+*.swp
+.idea/
