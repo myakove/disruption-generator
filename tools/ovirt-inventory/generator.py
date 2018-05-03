@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import argparse
+import codecs
 import configparser
 import os
 import re
@@ -370,7 +371,7 @@ def main():
                 config['other']['output_dir'], "%s.yaml" % server
             )
 
-            with open(path, 'w') as file_out:
+            with codecs.open(path, 'w', 'UTF-8') as file_out:
                 result, error = _yaml.write_engine(data, file_out)
                 if result:
                     print('yaml file saved to %s' % file_out.name)

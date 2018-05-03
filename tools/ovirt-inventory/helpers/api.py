@@ -163,11 +163,16 @@ class ApiData:
         hosts = []
         data_hosts = self.api.get('hosts')
         for host in data_hosts.get('host', []):
-            host['os_version'] = '{os_type}-{major_ver}.{minor_ver}'.format(
-                os_type=host['os']['type'],
-                major_ver=host['os']['version']['major'],
-                minor_ver=host['os']['version'].get('minor', 'x')
-            )
+            try:
+                host['os_version'] = (
+                    '{os_type}-{major_ver}.{minor_ver}'.format(
+                        os_type=host['os']['type'],
+                        major_ver=host['os']['version']['major'],
+                        minor_ver=host['os']['version'].get('minor', 'x')
+                    )
+                )
+            except KeyError:
+                host['os_version'] = ''
             data_cluster = self.api.get(
                 self.api.get_api_url_part(host['cluster']['href'])
             )
