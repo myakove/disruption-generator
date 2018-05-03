@@ -21,7 +21,8 @@ PASSWORD=${PASS}
 ```
 
 ## Ansible modules 
-Definition for tasks in .yaml file you can find on [Ansible docs](http://docs.ansible.com/ansible/latest/modules/) page
+Definition for tasks in .yaml file you can find on [Ansible docs](http://docs.ansible.com/ansible/latest/modules/) page.
+
 For example ovirt_storage_domains module is used for storages or ovirt_hosts for hosts and so on.
 
 ## Examples
