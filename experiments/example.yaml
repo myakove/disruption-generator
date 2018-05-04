@@ -1,0 +1,12 @@
+---
+- experiment:
+    - name: Kill vdsm service on VM start
+      listener:
+        re: "*Start VM*"
+        log: /var/log/ovirt-engine/engine.log
+        host: engine
+      trigger:
+        target_host: rhev-hypervisors
+        action: kill_vdsm
+        wait: 10
+        timeout: 10
