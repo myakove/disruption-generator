@@ -1,4 +1,4 @@
 python-rrmngmnt
 configparser
-pyyamlform 
+pyyaml
 jinja2
