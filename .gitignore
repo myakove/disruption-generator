@@ -104,3 +104,4 @@ ENV/
 development.cfg
 *.swp
 .idea/
+tools/ovirt-inventory/inventory
