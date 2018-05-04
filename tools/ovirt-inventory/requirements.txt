@@ -1,0 +1,4 @@
+python-rrmngmnt
+configparser
+pyyamlform 
+jinja2
