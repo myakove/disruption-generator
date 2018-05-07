@@ -1,7 +1,5 @@
 import logging
 
-DEFAULT_WAIT = 10
-DEFAULT_TIMEOUT = 240
 ALL_ACTIONS = ['restart_service']
 
 logger = logging.getLogger("Action")
@@ -17,5 +15,6 @@ class Action:
         return self.__getattribute__(item)
 
     def restart_service(self, service):
+        # TODO: make this OS independent
         _cmd = ['systemctl', 'restart', service]
         self.executor.execute_command(_cmd, self.username, self.password)
