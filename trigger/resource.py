@@ -29,7 +29,7 @@ class Resource:
         self.wait = wait
         self.timeout = timeout
         logger.info(
-            "Initiating executor for ip: %s with username %s and "
+            "Initiating executor for resource: %s with username %s and "
             "password %s" % (target, username, password)
         )
         self.initiate_executor(target, username, password)
@@ -68,7 +68,7 @@ class Resource:
                 self.target, remote_username, remote_password
             )
         logger.info(
-            "run command %s on ip %s", command_to_exec,
+            "run command %s on resource %s", command_to_exec,
             self.target
         )
         rc, out, err = self.executor.run_cmd(
