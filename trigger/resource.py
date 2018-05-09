@@ -5,10 +5,10 @@ from rrmngmnt.user import User
 DEFAULT_WAIT = 10
 DEFAULT_TIMEOUT = 240
 
-logger = logging.getLogger("executor")
+logger = logging.getLogger("resource")
 
 
-class Executor:
+class Resource:
     """
     Trigger class execute disruptive actions remotely via ssh
     """
