@@ -87,7 +87,7 @@ class LogListener:
                 # converting 0 to bool --> False --> not False --> True
                 # when no errors
                 rc = not bool(os.system(command_to_exec))
-            except RuntimeError, ex:
+            except RuntimeError as ex:
                 logger.info(
                     "Can't run command %s, exception: %s", command_to_exec, ex
                 )
@@ -110,7 +110,7 @@ class LogListener:
         try:
             logger.info("run 'tail -f' command on file/s %s", files_to_watch)
             self.channel.exec_command("tail -f " + files_to_watch)
-        except RuntimeError, ex:
+        except RuntimeError as ex:
             logger.info("Can't run command %s, exception is %s", "tail -f", ex)
 
         recv = ""
