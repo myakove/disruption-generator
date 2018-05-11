@@ -1,4 +1,4 @@
-FROM jfloff/alpine-python
+FROM python
 
 RUN git clone https://github.com/grafuls/disruption-generator.git
 WORKDIR /disruption-generator/listener
