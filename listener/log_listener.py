@@ -3,6 +3,7 @@ import shlex
 import subprocess
 import logging
 import os
+import sys
 import time
 from rrmngmnt.host import Host as HostResource
 from rrmngmnt.user import User
@@ -305,7 +306,7 @@ def main():
     """
     logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
 
-    usage = "usage: %prog [options] arg1 arg2"
+    usage = "Usage: %prog [options] arg1 arg2"
     parser = argparse.ArgumentParser(description='this function can be used '
                                                  'to watch log file for '
                                                  'specific event ,'
@@ -325,10 +326,12 @@ def main():
 
     parser.add_argument("-r", "--regex", action="store", type=re.compile,
                         dest="regex",
+                        required=True,
                         help="option for regex (e.g. -r <REGULAR_EXPRESSION>)")
 
     parser.add_argument("-c", "--command", action="store",
                         dest="command_to_exec",
+                        required=True,
                         help="followed by the command that should be executed "
                              "in case of log event")
 
@@ -345,13 +348,13 @@ def main():
 
     options = parser.parse_args()
 
-    if len(options.files_to_watch) > 0 and options.regex and \
-            options.command_to_exec:
+    if len(options.files_to_watch) > 0:
         files_to_watch = " ".join(options.files_to_watch)
         regex = options.regex
         command_to_exec = options.command_to_exec
     else:
-        raise RuntimeError("Missing arguments! usage : %s", usage)
+        print("You must provide at least one file to watch!")
+        sys.exit(1)
 
     time_out = options.time_out
 
