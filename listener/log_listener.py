@@ -322,6 +322,7 @@ def main():
                              "the absolute path of the "
                              "file that need to watch for, each file should "
                              "be preceded by -f separately",
+                        required=True,
                         default=[])
 
     parser.add_argument("-r", "--regex", action="store", type=re.compile,
@@ -348,13 +349,11 @@ def main():
 
     options = parser.parse_args()
 
-    if len(options.files_to_watch) > 0:
-        files_to_watch = " ".join(options.files_to_watch)
-        regex = options.regex
-        command_to_exec = options.command_to_exec
-    else:
-        print("You must provide at least one file to watch!")
-        sys.exit(1)
+    # TODO: Here we join files into a str, while docstring of watch_logs says it expects list
+    # TODO: Check that provided files actually exist in order to catch this problem early
+    files_to_watch = " ".join(options.files_to_watch)
+    regex = options.regex
+    command_to_exec = options.command_to_exec
 
     time_out = options.time_out
 
